@@ -73,3 +73,43 @@
 #include <cmath>
 using namespace std;
 
+#include <iostream>
+#include <limits>
+
+using namespace std;
+
+// Function to perform the calculation based on operator
+double calculate(double num1, double num2, char op, bool& validOperation) {
+    validOperation = true;
+    switch (op) {
+        case '+':
+            return num1 + num2;
+        case '-':
+            return num1 - num2;
+        case '*':
+            return num1 * num2;
+        case '/':
+            if (num2 == 0) {
+                cout << "Error: Division by zero is not allowed." << endl;
+                validOperation = false;
+                return 0;
+            }
+            return num1 / num2;
+        default:
+            cout << "Error: Invalid operator." << endl;
+            validOperation = false;
+            return 0;
+    }
+}
+
+int main() {
+    double num1, num2;
+    char op;
+    char choice;
+
+    do {
+        cout << "Enter first number: ";
+        while (!(cin >> num1)) {
+            cout << "Invalid input. Please enter a valid number: ";
+            cin.clear();
+            cin.ignore(numeric_limits<

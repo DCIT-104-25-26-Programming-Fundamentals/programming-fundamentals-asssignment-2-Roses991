@@ -80,6 +80,20 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <iomanip>
+#include <limits>
+
 using namespace std;
+
+// Struct to represent a student record
+struct Student {
+    string name;
+    int id;
+    vector<double> scores;
+};
+
+// Function to add a new student record
+void addStudent(vector<Student>& students) {
+    Student newStudent;
+    cout << "Enter student full name: ";
+    getline(cin >> ws,
 

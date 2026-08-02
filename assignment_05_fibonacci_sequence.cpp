@@ -51,3 +51,47 @@
 #include <iostream>
 using namespace std;
 
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Part 1: Generate Fibonacci sequence up to n terms and return as a vector
+vector<unsigned long long> generateFibonacci(int n) {
+    vector<unsigned long long> fibSequence;
+    if (n <= 0) return fibSequence;
+
+    fibSequence.push_back(0);
+    if (n == 1) return fibSequence;
+
+    fibSequence.push_back(1);
+    for (int i = 2; i < n; ++i) {
+        fibSequence.push_back(fibSequence[i-1] + fibSequence[i-2]);
+    }
+    return fibSequence;
+}
+
+// Part 2: Print the Fibonacci sequence from a vector
+void printFibonacci(const vector<unsigned long long>& fibSequence) {
+    for (unsigned long long num : fibSequence) {
+        cout << num << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int terms;
+    cout << "Enter the number of Fibonacci terms to generate: ";
+    cin >> terms;
+
+    if (terms <= 0) {
+        cout << "Please enter a positive integer." << endl;
+        return 1;
+    }
+
+    vector<unsigned long long> fibonacci = generateFibonacci(terms);
+    cout << "Fibonacci sequence:" << endl;
+    printFibonacci(fibonacci);
+
+    return 0;
+}

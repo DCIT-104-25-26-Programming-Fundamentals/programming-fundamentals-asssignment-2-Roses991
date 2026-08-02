@@ -57,3 +57,14 @@
 #include <iostream>
 using namespace std;
 
+#include <iostream>
+
+using namespace std;
+
+// Function to print multiplication table for a single number up to a given limit
+void printMultiplicationTable(int number, int limit) {
+    cout << "Multiplication Table for " << number << ":" << endl;
+    for (int i = 1; i <= limit; ++i) {
+        cout << number << " x " << i << " = " << number * i << endl;
+    }
+    cout << endl

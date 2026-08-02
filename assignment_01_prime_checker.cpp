@@ -37,3 +37,42 @@
 #include <iostream>
 using namespace std;
 
+#include <iostream>
+#include <cmath> // For sqrt function
+
+using namespace std;
+
+// Function to check if a number is prime
+bool isPrime(int num) {
+    // Prime numbers are greater than 1
+    if (num <= 1) {
+        return false;
+    }
+
+    // Check divisibility from 2 up to the square root of num
+    int limit = static_cast<int>(sqrt(num));
+    for (int i = 2; i <= limit; ++i) {
+        if (num % i == 0) {
+            // If num is divisible by i, it is not prime
+            return false;
+        }
+    }
+
+    // If no divisors found, num is prime
+    return true;
+}
+
+int main() {
+    int number;
+
+    cout << "Enter a number to check if it is prime: ";
+    cin >> number;
+
+    if (isPrime(number)) {
+        cout << number << " is a prime number." << endl;
+    } else {
+        cout << number << " is not a prime number." << endl;
+    }
+
+    return 0;
+}

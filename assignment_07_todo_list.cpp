@@ -80,3 +80,37 @@
 #include <string>
 using namespace std;
 
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Function to display the menu options
+void displayMenu() {
+    cout << "\n--- To-Do List Menu ---\n";
+    cout << "1. Add a task\n";
+    cout << "2. View all tasks\n";
+    cout << "3. Remove a task\n";
+    cout << "4. Exit\n";
+    cout << "Enter your choice: ";
+}
+
+// Function to add a task to the list
+void addTask(vector<string>& tasks) {
+    cout << "Enter the task description: ";
+    string task;
+    getline(cin >> ws, task);  // ws to consume any leftover newline
+    tasks.push_back(task);
+    cout << "Task added.\n";
+}
+
+// Function to view all tasks
+void viewTasks(const vector<string>& tasks) {
+    if (tasks.empty()) {
+        cout << "Your to-do list is empty.\n";
+        return;
+    }
+    cout << "\nYour Tasks:\n";
+    for (size_t i = 0; i < tasks.size(); ++i) {
+        cout << i

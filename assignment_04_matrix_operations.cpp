@@ -65,3 +65,29 @@
 #include <string>
 using namespace std;
 
+#include <iostream>
+
+using namespace std;
+
+const int MAX_SIZE = 10;
+
+// Function to add two matrices
+void addMatrices(int matrix1[MAX_SIZE][MAX_SIZE], int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            result[i][j] = matrix1[i][j] + matrix2[i][j];
+        }
+    }
+}
+
+// Function to subtract matrix2 from matrix1
+void subtractMatrices(int matrix1[MAX_SIZE][MAX_SIZE], int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            result[i][j] = matrix1[i][j] - matrix2[i][j];
+        }
+    }
+}
+
+// Function to multiply two matrices
+void multiplyMatrices(int matrix1[MAX_SIZE][MAX_SIZE], int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int rows1

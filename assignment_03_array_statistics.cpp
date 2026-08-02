@@ -42,3 +42,72 @@
 #include <iostream>
 using namespace std;
 
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include <algorithm>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+// Calculate mean (average)
+double calculateMean(const vector<double>& numbers) {
+    if (numbers.empty()) return 0.0;
+    double sum = accumulate(numbers.begin(), numbers.end(), 0.0);
+    return sum / numbers.size();
+}
+
+// Calculate median
+double calculateMedian(vector<double> numbers) {
+    if (numbers.empty()) return 0.0;
+    sort(numbers.begin(), numbers.end());
+    size_t n = numbers.size();
+    if (n % 2 == 0) {
+        return (numbers[n/2 - 1] + numbers[n/2]) / 2.0;
+    } else {
+        return numbers[n/2];
+    }
+}
+
+// Calculate variance (population variance)
+double calculateVariance(const vector<double>& numbers, double mean) {
+    if (numbers.empty()) return 0.0;
+    double sumSquaredDiffs = 0.0;
+    for (double num : numbers) {
+        sumSquaredDiffs += pow(num - mean, 2);
+    }
+    return sumSquaredDiffs / numbers.size();
+}
+
+int main() {
+    int n;
+    cout << "Enter the number of elements: ";
+    if (!(cin >> n) || n <= 0) {
+        cerr << "Invalid input. Please enter a positive integer." << endl;
+        return 1;
+    }
+
+    vector<double> numbers(n);
+    cout << "Enter " << n << " numbers:" << endl;
+    for (int i = 0; i < n; ++i) {
+        if (!(cin >> numbers[i])) {
+            cerr << "Invalid numeric input." << endl;
+            return 1;
+        }
+    }
+
+    double mean = calculateMean(numbers);
+    double median = calculateMedian(numbers);
+    double variance = calculateVariance(numbers, mean);
+    double stdDev = sqrt(variance);
+
+    cout << fixed << setprecision(4);
+    cout << "\n--- Statistics ---" << endl;
+    cout << "Mean:               " << mean << endl;
+    cout << "Median:             " << median << endl;
+    cout << "Variance:           " << variance << endl;
+    cout << "Standard Deviation: " << stdDev << endl;
+
+    return 0;
+}
